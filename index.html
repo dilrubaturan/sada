@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sada – A Space To Return To Yourself</title>
+  <title>Sada – A space to return to yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #fdf7f0;
+      --bg: #f6f1ea;
       --card: #ffffff;
-      --accent: #286f6b;
-      --accent-soft: #e0f0ee;
-      --highlight: #f4a261;
-      --text-main: #222222;
-      --text-muted: #555555;
+      --accent: #f3b77b;
+      --text: #222222;
+      --muted: #6c6862;
     }
 
     * {
@@ -23,82 +21,71 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #fce9d9 0, #fdf7f0 40%, #fdf7f0 100%);
-      color: var(--text-main);
-      line-height: 1.6;
+      background: radial-gradient(circle at top left, #fce9d6 0, var(--bg) 45%);
+      color: var(--text);
+      min-height: 100vh;
     }
 
     .page {
       max-width: 960px;
       margin: 0 auto;
-      padding: 24px 20px 40px;
+      padding: 32px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
-
-    /* HEADER */
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
     }
 
-    .brand {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 18px;
     }
 
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #ffe5c4, #286f6b 50%, #204e4b 100%);
+    .logo-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      font-size: 16px;
     }
 
-    .brand-icon::before {
-      content: "";
-      position: absolute;
-      width: 26px;
-      height: 18px;
-      border-radius: 999px 999px 40px 40px;
-      border: 2px solid #fdf7f0;
-      border-top: 4px solid #fdf7f0;
-      transform: translateY(2px) rotate(-8deg);
+    .tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--muted);
     }
 
-    .brand-name {
-      font-weight: 700;
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--accent);
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
-
-    .tagline {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* LAYOUT */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
       align-items: center;
-      margin-bottom: 36px;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 768px) {
       .hero {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
-
       header {
         flex-direction: column;
         align-items: flex-start;
@@ -106,360 +93,225 @@
       }
     }
 
-    .hero-text h1 {
-      font-size: clamp(2.1rem, 3vw, 2.6rem);
-      line-height: 1.2;
-      margin-bottom: 14px;
-      color: #1a3130;
+    .hero-title {
+      font-size: clamp(32px, 5vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
     }
 
-    .hero-highlight {
-      color: var(--accent);
+    .hero-subtitle {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle strong {
+      color: var(--text);
       font-weight: 600;
-    }
-
-    .hero-text p {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 6px;
+      align-items: center;
     }
 
     .btn-main {
       border: none;
-      cursor: pointer;
+      border-radius: 999px;
       padding: 10px 18px;
-      border-radius: 999px;
       background: var(--accent);
-      color: #ffffff;
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      color: #2b1a10;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
-    .btn-main span.arrow {
-      font-size: 1.1rem;
+    .btn-main:hover {
+      opacity: 0.9;
     }
 
-    .btn-ghost {
-      border-radius: 999px;
-      border: 1px solid rgba(40, 111, 107, 0.2);
-      padding: 9px 16px;
-      background: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      text-decoration: none;
+    .hero-note {
+      font-size: 13px;
+      color: var(--muted);
     }
-
-    /* HERO CARD */
 
     .hero-card {
-      background: var(--card);
-      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
       padding: 18px 18px 16px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
-    .hero-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.78rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-chip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--highlight);
-    }
-
-    .hero-card h2 {
-      font-size: 1rem;
-      margin-bottom: 6px;
-      color: #1f3937;
-    }
-
-    .hero-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .hero-card-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 8px;
     }
 
-    .quote-block {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #fdf1df;
-      border-left: 3px solid var(--highlight);
-      font-size: 0.88rem;
+    .hero-card-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 10px;
     }
 
-    .quote-block span {
+    .hero-card-line {
+      width: 40px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin: 10px 0 12px;
+    }
+
+    .hero-quote {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
       font-style: italic;
-      display: block;
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      letter-spacing: -0.02em;
       margin-bottom: 4px;
     }
 
-    .quote-author {
-      font-size: 0.8rem;
-      color: #7b5a29;
-    }
-
-    /* SECTIONS */
-
-    section {
-      margin-bottom: 32px;
-    }
-
-    section h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      color: #1f3937;
-    }
-
-    section p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
+    .section-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
     }
 
     .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 4px;
     }
 
     .pill {
-      padding: 6px 12px;
+      font-size: 12px;
+      padding: 5px 11px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      background: rgba(40, 111, 107, 0.06);
-      color: #28524f;
+      background: #f8eee3;
+      color: #5e4630;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 760px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 12px 14px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      font-size: 0.9rem;
-    }
-
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #223432;
-    }
-
-    /* REFLECTION AREA */
-
-    .reflection {
-      background: #ffffff;
+    .quote-block {
       border-radius: 18px;
       padding: 16px 16px 14px;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+      background: #fdf7ef;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      font-size: 13px;
+      line-height: 1.6;
+      color: #4f4338;
     }
 
-    .reflection label {
-      font-size: 0.9rem;
-      color: #2b4543;
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .reflection textarea {
-      width: 100%;
-      min-height: 90px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      padding: 10px 12px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      resize: vertical;
-      background: #fcfaf7;
-    }
-
-    .reflection textarea:focus {
-      outline: 2px solid rgba(40, 111, 107, 0.4);
-      border-color: transparent;
-      background: #ffffff;
-    }
-
-    .reflection-small {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .quote-author {
       margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
     }
 
     footer {
-      margin-top: 28px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      font-size: 12px;
+      color: var(--muted);
       text-align: center;
+      margin-top: 4px;
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="brand">
-        <div class="brand-icon" aria-hidden="true"></div>
-        <div>
-          <div class="brand-name">Sada</div>
-          <div class="tagline">A gentle shield for your inner world</div>
-        </div>
+      <div class="logo">
+        <div class="logo-badge">🕊️</div>
+        <span>Sada</span>
       </div>
+      <div class="tag">A quiet space for your inner voice</div>
     </header>
 
     <main>
-      <!-- HERO -->
       <section class="hero">
-        <div class="hero-text">
-          <h1>
-            A space to <span class="hero-highlight">return to yourself</span>
-            and remember what truly matters.
+        <div>
+          <h1 class="hero-title">
+            A space where you can return to yourself.
           </h1>
-          <p>
-            Sada is for people who feel lost in constant noise. You see many lives,
-            many goals, many definitions of success. Some of them do not match your values
-            at all. This page is a small beginning for a different way of living.
-          </p>
-          <p>
-            Here you can slow down, listen to your own heart, and build a life
-            that is free, respectful, and full of compassion for yourself and others.
+          <p class="hero-subtitle">
+            Sada is a gentle companion that helps you <strong>remember your values</strong>,
+            <strong>clarify your intentions</strong> and step away from comparison with lives
+            that do not belong to your path.
           </p>
           <div class="hero-actions">
-            <a href="#reflection" class="btn-main">
-              Start a short reflection
-              <span class="arrow">↳</span>
-            </a>
-            <a href="#about" class="btn-ghost">
-              Read the idea behind Sada
-            </a>
+            <button class="btn-main">Coming soon</button>
+            <span class="hero-note">Start from your own definition of success, not the timeline.</span>
           </div>
         </div>
 
         <aside class="hero-card">
-          <div class="hero-chip">
-            <span class="hero-chip-dot"></span>
-            A reminder, not a scoreboard
-          </div>
-          <h2>Not every goal belongs to you</h2>
-          <p>
-            Two people can chase the same goal. For one of them it is real success.
-            For the other it feels empty. Sada exists for the second one.
+          <div class="hero-card-label">Why Sada</div>
+          <p class="hero-card-text">
+            We live in a time where everybody shares everything and it is easy to compare
+            yourself with people who do not share your beliefs, your story or your rhythm.
           </p>
-          <p>
-            You can fill this space with sources that speak to your soul.
-            Poems, thoughts, teachings, the words that help you stay yourself in a changing world.
+          <p class="hero-card-text">
+            Sada is for people who sometimes forget who they are and what they are working for.
+            It invites you to collect the words, principles and reminders that keep you true to yourself
+            and to come back to them when life feels noisy.
           </p>
-          <div class="quote-block">
-            <span>“İlim ilim bilmektir, ilim kendini bilmektir.”</span>
-            <div class="quote-author">Yunus Emre</div>
-          </div>
+          <div class="hero-card-line"></div>
+          <p class="hero-quote">
+            “Sometimes the same goal does not mean the same success for two different people.
+            Sada protects the difference.”
+          </p>
         </aside>
       </section>
 
-      <!-- ABOUT -->
-      <section id="about">
-        <h3>What is Sada?</h3>
-        <p>
-          Sada is a concept for a future app and agent. This simple webpage is the first step.
-          The idea is to create a space where you:
-        </p>
-        <div class="pill-row">
-          <div class="pill">Return to your own values</div>
-          <div class="pill">Clarify your intentions</div>
-          <div class="pill">Protect your heart from comparison</div>
-          <div class="pill">Stay kind while being ambitious</div>
-        </div>
-        <p style="margin-top: 10px;">
-          Instead of pushing you to do more, Sada asks a softer question:
-          “Is this choice true to who you are and what you believe?”
-        </p>
-      </section>
-
-      <!-- HOW IT COULD WORK -->
-      <section>
-        <h3>How Sada can support you</h3>
-        <div class="grid">
-          <div class="card">
-            <div class="card-title">A personal compass</div>
-            <p>
-              You define your own meaning of success. The future Sada app can remind you of this
-              when you feel pulled into other people’s stories.
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-title">A place for your sources</div>
-            <p>
-              You can collect the words that keep you grounded. Writers, poets, teachers,
-              or even your own sentences that open your heart.
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-title">A shield against comparison</div>
-            <p>
-              When comparison hurts, Sada invites you to pause. You can ask yourself if that life,
-              that path, that version of success is really written for you.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- REFLECTION -->
-      <section id="reflection">
-        <h3>Begin with a small reflection</h3>
-        <div class="reflection">
-          <label for="today-intention">
-            Today, what do you want to stay loyal to in yourself?
-          </label>
-          <textarea
-            id="today-intention"
-            placeholder="For example: kindness, honesty, faith, courage, rest, gentleness with myself..."
-          ></textarea>
-          <p class="reflection-small">
-            You can write a few lines here for yourself. When this becomes a full app,
-            Sada will help you remember and return to these intentions.
+      <section class="section">
+        <div>
+          <h2 class="section-title">What Sada helps you remember</h2>
+          <p class="section-text">
+            Instead of pushing you to chase what others are chasing, Sada invites you to build
+            a small inner library of what you believe in and want to live by. Your own principles,
+            your own role models, your own language for freedom, respect and compassion.
           </p>
+          <div class="pill-row">
+            <span class="pill">Your values</span>
+            <span class="pill">Your intentions</span>
+            <span class="pill">Your pace</span>
+            <span class="pill">Your way of being free</span>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <div>
+            “İlim ilim bilmektir, ilim kendini bilmektir.”
+          </div>
+          <div class="quote-author">Yunus Emre</div>
         </div>
       </section>
     </main>
 
     <footer>
-      Sada · A quiet beginning for a more honest, compassionate, and free life.
+      Sada is an early idea. For now it is only a quiet page. One day it will grow into a living companion.
     </footer>
   </div>
 </body>
