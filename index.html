@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sada – A space to return to yourself</title>
+  <title>Sada – A Space to Return to Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Soft, elegant Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --bg: #f6f1ea;
+      --bg-start: #fce9d6;
+      --bg-end: #dff3f0;
       --card: #ffffff;
-      --accent: #f3b77b;
-      --text: #222222;
-      --muted: #6c6862;
+      --accent: #e3a76a;
+      --text-main: #2e2d2b;
+      --text-soft: #6d6a67;
     }
 
     * {
@@ -20,21 +25,23 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #fce9d6 0, var(--bg) 45%);
-      color: var(--text);
-      min-height: 100vh;
+      font-family: "Inter", system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      background-attachment: fixed;
+      color: var(--text-main);
+      padding: 28px 20px 40px;
+      line-height: 1.55;
     }
 
     .page {
-      max-width: 960px;
+      max-width: 880px;
       margin: 0 auto;
-      padding: 32px 20px 40px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 36px;
     }
 
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -44,198 +51,166 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-weight: 600;
+      font-size: 20px;
       letter-spacing: 0.04em;
-      font-size: 18px;
+      color: var(--text-main);
     }
 
     .logo-badge {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
-      background: var(--accent);
+      background: radial-gradient(circle at 30% 20%, #ffe9ce, var(--accent) 70%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .tag {
-      font-size: 12px;
-      padding: 4px 10px;
+      font-size: 13px;
+      padding: 5px 12px;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.03);
-      color: var(--muted);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(6px);
+      color: var(--text-soft);
     }
 
-    main {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
+    /* HERO */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 32px;
-      align-items: center;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 28px;
+      align-items: start;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 760px) {
       .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        grid-template-columns: 1fr;
       }
     }
 
     .hero-title {
       font-size: clamp(32px, 5vw, 40px);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      font-weight: 500;
     }
 
-    .hero-subtitle {
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--muted);
-      margin-bottom: 20px;
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-soft);
+      margin-bottom: 18px;
     }
 
-    .hero-subtitle strong {
-      color: var(--text);
+    .hero-sub strong {
+      color: var(--text-main);
       font-weight: 600;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
     }
 
     .btn-main {
       border: none;
       border-radius: 999px;
-      padding: 10px 18px;
+      padding: 11px 20px;
       background: var(--accent);
-      color: #2b1a10;
+      color: #fffdf9;
       font-size: 14px;
-      font-weight: 600;
       cursor: pointer;
+      font-weight: 500;
+      transition: opacity 0.2s;
     }
 
     .btn-main:hover {
       opacity: 0.9;
     }
 
-    .hero-note {
-      font-size: 13px;
-      color: var(--muted);
+    /* CARD */
+    .card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
-      padding: 18px 18px 16px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-    }
-
-    .hero-card-label {
-      font-size: 11px;
+    .card-title {
+      font-size: 14px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-card-text {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text);
+      color: var(--text-soft);
       margin-bottom: 10px;
     }
 
-    .hero-card-line {
-      width: 40px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--accent);
-      margin: 10px 0 12px;
+    .card-text {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 12px;
     }
 
-    .hero-quote {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--muted);
+    .quote-box {
+      background: #fffaf4;
+      border-radius: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      font-size: 14px;
+      color: var(--text-soft);
       font-style: italic;
     }
 
+    .quote-author {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #8c7d5b;
+    }
+
+    /* FEATURE SECTION */
     .section {
-      background: var(--card);
+      padding: 22px 20px 18px;
       border-radius: 20px;
-      padding: 20px 18px 18px;
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.45);
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
     }
 
     .section-title {
-      font-size: 18px;
-      letter-spacing: -0.02em;
-      margin-bottom: 4px;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
     }
 
     .section-text {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--muted);
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.5;
     }
 
     .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 4px;
     }
 
     .pill {
-      font-size: 12px;
-      padding: 5px 11px;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: #f8eee3;
-      color: #5e4630;
-    }
-
-    .quote-block {
-      border-radius: 18px;
-      padding: 16px 16px 14px;
-      background: #fdf7ef;
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      font-size: 13px;
-      line-height: 1.6;
-      color: #4f4338;
-    }
-
-    .quote-author {
-      margin-top: 6px;
+      background: rgba(227, 167, 106, 0.18);
+      color: #5a4630;
       font-size: 12px;
-      color: var(--muted);
     }
 
     footer {
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-soft);
       text-align: center;
-      margin-top: 4px;
+      margin-top: 18px;
     }
   </style>
 </head>
@@ -246,72 +221,62 @@
         <div class="logo-badge">🕊️</div>
         <span>Sada</span>
       </div>
-      <div class="tag">A quiet space for your inner voice</div>
+      <div class="tag">
+        A quiet place for your inner voice
+      </div>
     </header>
 
     <main>
       <section class="hero">
         <div>
-          <h1 class="hero-title">
-            A space where you can return to yourself.
-          </h1>
-          <p class="hero-subtitle">
-            Sada is a gentle companion that helps you <strong>remember your values</strong>,
+          <h1 class="hero-title">A space where you can return to yourself.</h1>
+
+          <p class="hero-sub">
+            Sada helps you <strong>remember your values</strong>,
             <strong>clarify your intentions</strong> and step away from comparison with lives
             that do not belong to your path.
           </p>
-          <div class="hero-actions">
-            <button class="btn-main">Coming soon</button>
-            <span class="hero-note">Start from your own definition of success, not the timeline.</span>
-          </div>
+
+          <button class="btn-main">Coming soon</button>
         </div>
 
-        <aside class="hero-card">
-          <div class="hero-card-label">Why Sada</div>
-          <p class="hero-card-text">
-            We live in a time where everybody shares everything and it is easy to compare
-            yourself with people who do not share your beliefs, your story or your rhythm.
+        <aside class="card">
+          <div class="card-title">Why Sada</div>
+
+          <p class="card-text">
+            In a world where every moment is shared, it is easy to compare yourself
+            with people who do not share your story, your beliefs or your rhythm.
           </p>
-          <p class="hero-card-text">
+
+          <p class="card-text">
             Sada is for people who sometimes forget who they are and what they are working for.
-            It invites you to collect the words, principles and reminders that keep you true to yourself
-            and to come back to them when life feels noisy.
           </p>
-          <div class="hero-card-line"></div>
-          <p class="hero-quote">
-            “Sometimes the same goal does not mean the same success for two different people.
-            Sada protects the difference.”
-          </p>
+
+          <div class="quote-box">
+            “İlim ilim bilmektir, ilim kendini bilmektir.”
+            <div class="quote-author">Yunus Emre</div>
+          </div>
         </aside>
       </section>
 
       <section class="section">
-        <div>
-          <h2 class="section-title">What Sada helps you remember</h2>
-          <p class="section-text">
-            Instead of pushing you to chase what others are chasing, Sada invites you to build
-            a small inner library of what you believe in and want to live by. Your own principles,
-            your own role models, your own language for freedom, respect and compassion.
-          </p>
-          <div class="pill-row">
-            <span class="pill">Your values</span>
-            <span class="pill">Your intentions</span>
-            <span class="pill">Your pace</span>
-            <span class="pill">Your way of being free</span>
-          </div>
-        </div>
+        <h2 class="section-title">What Sada helps you protect</h2>
+        <p class="section-text">
+          Sada is a soft reminder to stay close to your own values rather than
+          being pulled into the noise of timelines, expectations and comparison.
+        </p>
 
-        <div class="quote-block">
-          <div>
-            “İlim ilim bilmektir, ilim kendini bilmektir.”
-          </div>
-          <div class="quote-author">Yunus Emre</div>
+        <div class="pill-row">
+          <span class="pill">your values</span>
+          <span class="pill">your pace</span>
+          <span class="pill">your intentions</span>
+          <span class="pill">your way of being free</span>
         </div>
       </section>
     </main>
 
     <footer>
-      Sada is an early idea. For now it is only a quiet page. One day it will grow into a living companion.
+      Sada is an early seed. One day it will grow into a companion built around your truth.
     </footer>
   </div>
 </body>
